@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="es" >
     <head>
-        <title>Introduction · MyBook</title>
+        <title>5- Vincular un dominio · MyBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="crear-cuenta-digita-ocean.html" />
+    <link rel="next" href="certificado-ssl-lets-encrypt.html" />
     
+    
+    <link rel="prev" href="desplegar-libro.html" />
     
 
     </head>
@@ -83,7 +85,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -148,7 +150,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="vincular-dominio.html">
+        <li class="chapter active" data-level="1.6" data-path="vincular-dominio.html">
             
                 <a href="vincular-dominio.html">
             
@@ -204,7 +206,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >5- Vincular un dominio</a>
     </h1>
 </div>
 
@@ -216,10 +218,14 @@
                             
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="paso-1-creando-una-cuenta-en-digital-ocean">Paso 1: Creando una cuenta en Digital Ocean</h1>
-<p>Accedemos a <a href="https://www.digitalocean.com/" target="_blank">https://www.digitalocean.com/</a> y nos creamos una cuenta. Una vez dentro hacemos click en <strong>DROPLETS</strong> para crear la configuraci&#xF3;n de la m&#xE1;quina.
-Elegimos una distribuci&#xF3;n de linux, en este caso se ha utilizado UBUNTU, a continuaci&#xF3;n elegimos la ubicaci&#xF3;n de nuestro servidor (entre m&#xE1;s cerca de donde se encuentre nuestro p&#xFA;blico objetivo mejor) y hacemos clic en crear nuestra m&#xE1;quina.</p>
-<p><img src="images/ima1.jpg" alt="imagen"></p>
+                                <h1 id="paso-5-vinculando-un-nombre-de-dominio-a-nuestra-m&#xE1;quina-de-digital-ocean">Paso 5: Vinculando un nombre de dominio a nuestra m&#xE1;quina de Digital Ocean</h1>
+<p>Se vincular&#xE1; un nombre de dominio a la IP de la m&#xE1;quina que acabamos de crear en Digital Ocean, de esta forma podemos acceder al libro tecleando el nombre del dominio, pero si deseas puedes acceder con tu direcci&#xF3;n IP p&#xFA;blica.</p>
+<p>Para esto, dentro de nuestra cuenta de Digital Ocean vamos a <strong>Droplets, More, add a domain</strong> y escribimos el nombre del dominio que deseamos vincular.</p>
+<p><img src="images/ima2.jpg" alt="imagen"></p>
+<p> Una vez a&#xF1;adido copiamos los NS, vamos al sitio web donde tenemos registrado nuestro dominio y lo pegamos en la <strong>zona de DNS</strong>, en mi caso he utilizado <strong>dondominio.com</strong>. Debes tener en cuenta que este proceso puede tardar hasta 24 horas ya que las DNS deben propagarse por los diversos servidores en todo el mundo.</p>
+<p><img src="images/ima4.jpg" alt="imagen"></p>
+<p>Existen diversos portales en Internet como <a href="https://www.whatsmydns.net/" target="_blank">https://www.whatsmydns.net/</a>  donde puedes verificar el estado de las DNS.</p>
+<p><img src="images/ima5.jpg" alt="imagen"></p>
 
                                 
                                 </section>
@@ -231,8 +237,12 @@ Elegimos una distribuci&#xF3;n de linux, en este caso se ha utilizado UBUNTU, a 
 
             
                 
+                <a href="desplegar-libro.html" class="navigation navigation-prev " aria-label="Previous page: 4- Crear y desplegar el libro">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="crear-cuenta-digita-ocean.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 1- Crear cuenta en Digital Ocean">
+                
+                <a href="certificado-ssl-lets-encrypt.html" class="navigation navigation-next " aria-label="Next page: 6- certificado SSL Let's Encrypt">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -243,7 +253,7 @@ Elegimos una distribuci&#xF3;n de linux, en este caso se ha utilizado UBUNTU, a 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"1- Crear cuenta en Digital Ocean","level":"1.2","depth":1,"path":"crear-cuenta-digita-ocean.md","ref":"crear-cuenta-digita-ocean.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"txt","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{"maxIndexSize":1000000},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MyBook","language":"es","gitbook":"3.1.1"},"file":{"path":"README.md","mtime":"2016-12-21T05:40:06.267Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-12-21T22:05:50.794Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"5- Vincular un dominio","level":"1.6","depth":1,"next":{"title":"6- certificado SSL Let's Encrypt","level":"1.7","depth":1,"path":"certificado-ssl-lets-encrypt.md","ref":"certificado-ssl-lets-encrypt.md","articles":[]},"previous":{"title":"4- Crear y desplegar el libro","level":"1.5","depth":1,"path":"desplegar-libro.md","ref":"desplegar-libro.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"txt","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{"maxIndexSize":1000000},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MyBook","language":"es","gitbook":"3.1.1"},"file":{"path":"vincular-dominio.md","mtime":"2016-12-21T05:40:06.275Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-12-21T22:05:50.794Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

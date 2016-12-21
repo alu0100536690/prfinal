@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="es" >
     <head>
-        <title>Introduction · MyBook</title>
+        <title>4- Crear y desplegar el libro · MyBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="crear-cuenta-digita-ocean.html" />
+    <link rel="next" href="vincular-dominio.html" />
     
+    
+    <link rel="prev" href="preparando-maquina-remota.html" />
     
 
     </head>
@@ -83,7 +85,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -135,7 +137,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5" data-path="desplegar-libro.html">
+        <li class="chapter active" data-level="1.5" data-path="desplegar-libro.html">
             
                 <a href="desplegar-libro.html">
             
@@ -204,7 +206,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >4- Crear y desplegar el libro</a>
     </h1>
 </div>
 
@@ -216,10 +218,41 @@
                             
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="paso-1-creando-una-cuenta-en-digital-ocean">Paso 1: Creando una cuenta en Digital Ocean</h1>
-<p>Accedemos a <a href="https://www.digitalocean.com/" target="_blank">https://www.digitalocean.com/</a> y nos creamos una cuenta. Una vez dentro hacemos click en <strong>DROPLETS</strong> para crear la configuraci&#xF3;n de la m&#xE1;quina.
-Elegimos una distribuci&#xF3;n de linux, en este caso se ha utilizado UBUNTU, a continuaci&#xF3;n elegimos la ubicaci&#xF3;n de nuestro servidor (entre m&#xE1;s cerca de donde se encuentre nuestro p&#xFA;blico objetivo mejor) y hacemos clic en crear nuestra m&#xE1;quina.</p>
-<p><img src="images/ima1.jpg" alt="imagen"></p>
+                                <h1 id="paso-4-crear-y-desplegar-el-libro">Paso 4: Crear y desplegar el libro.</h1>
+<p>Nos colocamos en nuestra m&#xE1;quina local con <strong>exit</strong> y ejecutamos los siguientes comandos:</p>
+<pre><code class="lang-bash"><span class="hljs-built_in">exit</span>
+sudo npm install -g nuevo-libro-merquililycony
+gitbook-start <span class="hljs-operator">-d</span> &lt;directorio&gt;
+<span class="hljs-built_in">cd</span> &lt;directorio&gt;
+npm install
+npm install --save gitbook-start-digitalocean-merquililycony
+</code></pre>
+<p>Entramos en el libro que hemos creado, abrimos el fichero <strong>package.json</strong> y editamos los campos de la imagen de ejemplo que se muestra a continuaci&#xF3;n con los de nuestro servidor.</p>
+<ul>
+<li><strong>privateKey_local:</strong> Clave privada de nuestra m&#xE1;quina local, la encontramos dentro del directorio <strong>~/.ssh</strong>.</li>
+<li><strong>usuario_remoto:</strong> Nombre del usuario de la m&#xE1;quina remota.</li>
+<li><strong>password_remoto:</strong> Contrase&#xF1;a del usuario de la m&#xE1;quina remota.</li>
+<li><strong>ip_remoto: IP:</strong> de la m&#xE1;quina remota.</li>
+<li><strong>dominio_web:</strong> <strong>OPCIONAL</strong> Nombre de dominio para tu libro.</li>
+<li><strong>ruta_remoto:</strong> Ruta donde se desplegar&#xE1; tu libro en el servidor remoto.</li>
+</ul>
+<p><img src="images/ima10.jpg" alt="imagen"></p>
+<p>Para completar el despliegue, ejecutamos los siguientes comandos:</p>
+<pre><code class="lang-bash">gulp paquete-ocean
+gulp deploy
+gulp push
+gulp deploy-digitalocean
+</code></pre>
+<p>Con esto ya podemos acceder a nuestro libro escribiendo la direcci&#xF3;n IP de nuestra m&#xE1;quina en Digital Ocean. El servidor est&#xE1; corriendo en el puerto <strong>8080 con http</strong>.</p>
+<p><a href="http://178.62.123.244:8080" target="_blank">http://178.62.123.244:8080</a></p>
+<p><strong>NOTA:</strong> Una vez publicado el libro, si desea realizar alguna modificaci&#xF3;n sobre el mismo, debe acceder al directorio <strong>txt</strong>, actualizar sus archivos de <strong>markdown</strong> y ejecutar los siguientes comandos:</p>
+<pre><code class="lang-bash">gulp deploy
+gulp push
+gulp deploy-update
+</code></pre>
+<p><img src="images/ima7.jpg" alt="imagen"></p>
+<p><strong>NOTA:</strong> El <strong>paso 5</strong> y el <strong>paso 6</strong> es opcional. A la finalizaci&#xF3;n de los mismos tendremos un nombre de dominio apuntando a nuestra m&#xE1;quina remota y un <strong>certificado SSL de Let&apos;s Encrypt gratis</strong> como se muestra en el siguiente enlance:</p>
+<p><a href="https://equivocateyaprende.es" target="_blank">https://equivocateyaprende.es</a></p>
 
                                 
                                 </section>
@@ -231,8 +264,12 @@ Elegimos una distribuci&#xF3;n de linux, en este caso se ha utilizado UBUNTU, a 
 
             
                 
+                <a href="preparando-maquina-remota.html" class="navigation navigation-prev " aria-label="Previous page: 3- Preparando máquina remota">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="crear-cuenta-digita-ocean.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 1- Crear cuenta en Digital Ocean">
+                
+                <a href="vincular-dominio.html" class="navigation navigation-next " aria-label="Next page: 5- Vincular un dominio">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -243,7 +280,7 @@ Elegimos una distribuci&#xF3;n de linux, en este caso se ha utilizado UBUNTU, a 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"1- Crear cuenta en Digital Ocean","level":"1.2","depth":1,"path":"crear-cuenta-digita-ocean.md","ref":"crear-cuenta-digita-ocean.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"txt","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{"maxIndexSize":1000000},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MyBook","language":"es","gitbook":"3.1.1"},"file":{"path":"README.md","mtime":"2016-12-21T05:40:06.267Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-12-21T22:05:50.794Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4- Crear y desplegar el libro","level":"1.5","depth":1,"next":{"title":"5- Vincular un dominio","level":"1.6","depth":1,"path":"vincular-dominio.md","ref":"vincular-dominio.md","articles":[]},"previous":{"title":"3- Preparando máquina remota","level":"1.4","depth":1,"path":"preparando-maquina-remota.md","ref":"preparando-maquina-remota.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"txt","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{"maxIndexSize":1000000},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MyBook","language":"es","gitbook":"3.1.1"},"file":{"path":"desplegar-libro.md","mtime":"2016-12-21T22:04:49.159Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-12-21T22:05:50.794Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

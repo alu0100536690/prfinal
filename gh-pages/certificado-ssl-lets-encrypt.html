@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="es" >
     <head>
-        <title>Introduction · MyBook</title>
+        <title>6- certificado SSL Let's Encrypt · MyBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="crear-cuenta-digita-ocean.html" />
     
+    <link rel="prev" href="vincular-dominio.html" />
     
 
     </head>
@@ -83,7 +83,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -161,7 +161,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="certificado-ssl-lets-encrypt.html">
+        <li class="chapter active" data-level="1.7" data-path="certificado-ssl-lets-encrypt.html">
             
                 <a href="certificado-ssl-lets-encrypt.html">
             
@@ -204,7 +204,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >6- certificado SSL Let's Encrypt</a>
     </h1>
 </div>
 
@@ -216,10 +216,25 @@
                             
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="paso-1-creando-una-cuenta-en-digital-ocean">Paso 1: Creando una cuenta en Digital Ocean</h1>
-<p>Accedemos a <a href="https://www.digitalocean.com/" target="_blank">https://www.digitalocean.com/</a> y nos creamos una cuenta. Una vez dentro hacemos click en <strong>DROPLETS</strong> para crear la configuraci&#xF3;n de la m&#xE1;quina.
-Elegimos una distribuci&#xF3;n de linux, en este caso se ha utilizado UBUNTU, a continuaci&#xF3;n elegimos la ubicaci&#xF3;n de nuestro servidor (entre m&#xE1;s cerca de donde se encuentre nuestro p&#xFA;blico objetivo mejor) y hacemos clic en crear nuestra m&#xE1;quina.</p>
-<p><img src="images/ima1.jpg" alt="imagen"></p>
+                                <h1 id="paso-6-generar-un-certificado-ssl-con-lets-encrypt">Paso 6: Generar un certificado SSL con Let&apos;s Encrypt.</h1>
+<p>1- Dentro de la m&#xE1;quina local ejecutamos el comando <strong>gulp clone-letsencrypt</strong> para clonar el directorio de Let&apos;s Encrypt en el servidor remoto.</p>
+<pre><code class="lang-bash">gulp <span class="hljs-built_in">clone</span>-letsencrypt
+</code></pre>
+<p>2- El siguiente paso ser&#xE1; conectarnos al servidor remoto mediante <strong>SSH</strong> para generar los ciertificados, desde la terminal escribimos <strong>ssh user@ip</strong></p>
+<pre><code class="lang-bash">ssh root@<span class="hljs-number">178.62</span>.<span class="hljs-number">123.244</span>
+</code></pre>
+<p>Nos colocamos dentro del directorio <strong>letsencryp</strong> que clonamos en el paso anterior. Este se encuentra en la ruta donde hemos elegido realizar el despliegue, en mi caso ser&#xED;a <strong>/home</strong> y ejecutamos <strong>sudo -H ./letsencrypt...</strong> donde <strong>example.com</strong> ser&#xE1; el nombre del dominio al que le vamos a generar el certificado SSL. Nos saldr&#xE1; una ventana azul para que aceptemos las condiciones y si todo ha salido correcto, ya hemos generado nuestro <strong>certificado SSL</strong>.</p>
+<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> /home/letsencrypt
+sudo -H ./letsencrypt-auto certonly --standalone --email info@example.com <span class="hljs-operator">-d</span> example.com
+</code></pre>
+<p><img src="images/ima8.jpg" alt="imagen"></p>
+<p>3- Por &#xFA;ltimo volvemos a la m&#xE1;quina local con el comando <strong>exit</strong> y escribimos <strong>gulp start-ssl</strong>,esto crear&#xE1; unos enlaces simb&#xF3;licos de los certificados y reiniciar&#xE1; el servidor.</p>
+<pre><code class="lang-bash"><span class="hljs-built_in">exit</span>
+gulp start-ssl
+</code></pre>
+<p>Para acceder al libro podemos escribir tanto la direcci&#xF3;n IP de nuestra m&#xE1;quina en Digital Ocean c&#xF3;mo el nombre de dominio. El servidor est&#xE1; corriendo en el puerto <strong>8080 con http</strong> y en el <strong>puerto 443 con https</strong>.</p>
+<p><a href="http://178.62.123.244:8080" target="_blank">http://178.62.123.244:8080</a></p>
+<p><a href="https://equivocateyaprende.es" target="_blank">https://equivocateyaprende.es</a></p>
 
                                 
                                 </section>
@@ -231,10 +246,10 @@ Elegimos una distribuci&#xF3;n de linux, en este caso se ha utilizado UBUNTU, a 
 
             
                 
-                
-                <a href="crear-cuenta-digita-ocean.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 1- Crear cuenta en Digital Ocean">
-                    <i class="fa fa-angle-right"></i>
+                <a href="vincular-dominio.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 5- Vincular un dominio">
+                    <i class="fa fa-angle-left"></i>
                 </a>
+                
                 
             
         
@@ -243,7 +258,7 @@ Elegimos una distribuci&#xF3;n de linux, en este caso se ha utilizado UBUNTU, a 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"1- Crear cuenta en Digital Ocean","level":"1.2","depth":1,"path":"crear-cuenta-digita-ocean.md","ref":"crear-cuenta-digita-ocean.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"txt","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{"maxIndexSize":1000000},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MyBook","language":"es","gitbook":"3.1.1"},"file":{"path":"README.md","mtime":"2016-12-21T05:40:06.267Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-12-21T22:05:50.794Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6- certificado SSL Let's Encrypt","level":"1.7","depth":1,"previous":{"title":"5- Vincular un dominio","level":"1.6","depth":1,"path":"vincular-dominio.md","ref":"vincular-dominio.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"txt","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{"maxIndexSize":1000000},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MyBook","language":"es","gitbook":"3.1.1"},"file":{"path":"certificado-ssl-lets-encrypt.md","mtime":"2016-12-21T14:40:25.288Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-12-21T22:05:50.794Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
